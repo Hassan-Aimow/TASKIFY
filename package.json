@@ -1,0 +1,18 @@
+{
+    "name": "your_project_name",
+    "version": "1.0.0",
+    "description": "A simple Node.js project with task routes",
+    "main": "index.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    },
+    "keywords": ["node", "http", "server", "tasks"],
+    "author": "Your Name",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+      "nodemon": "^3.0.0"
+    }
+  }
+  
