@@ -1,17 +1,18 @@
-const { createTaskas, getTaskas } = require("../Controlles/taskControlles")
+const { createTasks, getTasks } = require("../Controlles/taskControlles")
+const { getTasks }= require("../Controlles/taskControlles");
 
 const taskRoutes = (req, res) => {
     // TOD: Define all routes
     
     if (req.method === 'GET') {
         // res.end('Get all tasks');
-        getTaskasa(req,res)
+        getTasks  (req,res)
     } else if (req.method === 'POST') {
         // res.end('Create a new task');
-        createTaskas(req,res)
+        createTasks(req,res)
     } else if (req.method === 'PATCH') {
         // res.end('Update a task');
-        updateTaskas(req,res)
+        updateTasks(req,res)
     } else if (req.method === 'DELETE') {
         // res.end('Delete a task');
         DeleteTasks(req,res)

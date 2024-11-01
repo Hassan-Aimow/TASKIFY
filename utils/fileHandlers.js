@@ -18,3 +18,4 @@ exports.readTaskaFromFile =() => {
 
 const data =fs.readFileSync('./..data/tasks.json')
 return JSON.parse(data);
+  
