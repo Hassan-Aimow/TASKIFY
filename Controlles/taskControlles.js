@@ -48,10 +48,16 @@ exports.createTasks = (req, res) => {
 
 // Placeholder for updating a task
 exports.updateTasks = (req, res) => {
-    // Logic for updating a task goes here
+    res.end(JSON.stringify({
+        message:'Not yet implemented'
+    }))
+    
 };
 
 // Placeholder for deleting a task
 exports.deleteTasks = (req, res) => {
-    // Logic for deleting a task goes here
-};
+    res.end(JSON.stringify({
+        message:'Not yet implemented'
+    }))
+    
+}; 
