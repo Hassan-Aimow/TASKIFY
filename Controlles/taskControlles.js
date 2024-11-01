@@ -1,5 +1,8 @@
 const { IncomingForm } = require('formidable');
 const { readTasksFromFile, writeTasksToFile } = require("../utils/fileHandlers");
+const { copyFileSync } = require('fs');
+const path = require('path');
+
 
 // Get all tasks
 exports.getTasks = (req, res) => {
@@ -29,6 +32,11 @@ exports.createTasks = (req, res) => {
 
          tasks.push(newTask);
         writeTasksToFile(tasks);
+
+        if(files.image){
+            copyFileSync(files.image.path, path.join(dirname, '../uploads', files.image.name));
+            res.end(JSON.stringify(newTask))
+        }
 
         res.writeHead(201, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
