@@ -1,4 +1,9 @@
+const { readTaskaFromFile } = require("../utils/fileHandlers");
+
 exports.getTaskas = (req,res) =>{
+    const tasks =readTaskaFromFile();
+    res.writerHead(200, {'Content-type' : 'applocation/json'})
+    res.end(JSON.stringify(tasks))
     
 
 
