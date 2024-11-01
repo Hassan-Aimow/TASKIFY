@@ -16,8 +16,8 @@ const taskRoutes = (req, res) => {
         // res.end('Delete a task');
         DeleteTasks(req,res)
     } else {
-        res.writeHead(404, 'Not Found', { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Route not found' }));
+        res.writeHead(404, 'Data Not Found', { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Unknow Method required' }));
     }
 }
 

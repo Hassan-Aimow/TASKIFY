@@ -1,8 +1,12 @@
 const fs =require('fs');
+const path = require('path'); // which ever os inuu handle gareeyo
 
+const filePath ='./data/tasks.json';
+ 
+// write task file aa smaynaa
 exports.writeTasksToFile=(data) =>{
     
-    fs.writeFilesync('./..fata/tasks.json',  JSON.stringify(data));
+    fs.writeFilesync('./..data/tasks.json',  JSON.stringify(data));
 }
 
 exports.readTaskaFromFile =() => {
