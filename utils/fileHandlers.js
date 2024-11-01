@@ -1,21 +1,19 @@
-const fs =require('fs');
-const path = require('path'); // which ever os inuu handle gareeyo
+const fs = require('fs');
+const path = require('path'); // Import path for file path handling
 
-const filePath ='./data/tasks.json';
- 
-// write task file aa smaynaa
-exports.writeTasksToFile=(data) =>{
-    
-    fs.writeFilesync('./..data/tasks.json',  JSON.stringify(data));
-}
+const filePath = path.join(__dirname, '../data/tasks.json'); // Use path for cross-OS compatibility
 
-exports.readTaskaFromFile =() => {
-    if(!fs.existsSync('./../data/tasks.json'))
-        this.writeTasksToFile([]);
+// Function to write tasks to file
+exports.writeTasksToFile = (data) => {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2)); // Corrected typo in `writeFileSync`
+};
 
-    return[];
-}
-
-const data =fs.readFileSync('./..data/tasks.json')
-return JSON.parse(data);
-  
+// Function to read tasks from file
+exports.readTasksFromFile = () => {
+    if (!fs.existsSync(filePath)) {
+        exports.writeTasksToFile([]); // Initializes file if it doesn't exist
+        return [];
+    }
+    const data = fs.readFileSync(filePath); // Reads file content
+    return JSON.parse(data); // Parse JSON data
+};

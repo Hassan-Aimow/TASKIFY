@@ -1,7 +1,7 @@
 const { IncomingForm } = require('formidable');
 const { readTasksFromFile, writeTasksToFile } = require("../utils/fileHandlers");
 
-// Get tasks
+// Get all tasks
 exports.getTasks = (req, res) => {
     const tasks = readTasksFromFile();
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -11,24 +11,23 @@ exports.getTasks = (req, res) => {
 // Create a new task
 exports.createTasks = (req, res) => {
     const form = new IncomingForm();
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, (err, fields) => {
         if (err) {
             res.writeHead(400, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({
-                message: 'Error parsing form'
-            }));
+            res.end(JSON.stringify({ message: 'Error parsing form' }));
             return;
         }
         
         const tasks = readTasksFromFile();
         const newTask = {
-            id: Date.now(), 
+            id: Date.now(),
             title: fields.title,
-            description: fields.description, 
+            description: fields.description, // Fixed 'description' typo
             status: fields.status || "pending",
+            Image:Files.Image ? `/uploads/${files.image.name}`: null,
         };
 
-        tasks.push(newTask);
+         tasks.push(newTask);
         writeTasksToFile(tasks);
 
         res.writeHead(201, { 'Content-Type': 'application/json' });
@@ -39,12 +38,12 @@ exports.createTasks = (req, res) => {
     });
 };
 
-// Update an existing task
+// Placeholder for updating a task
 exports.updateTasks = (req, res) => {
-    // Implementation for updating a task
+    // Logic for updating a task goes here
 };
 
-// Delete a task
+// Placeholder for deleting a task
 exports.deleteTasks = (req, res) => {
-    // Implementation for deleting a task
+    // Logic for deleting a task goes here
 };
