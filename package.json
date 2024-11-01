@@ -1,5 +1,5 @@
 {
-    "name": "your_project_name",
+    "name": "TASKIFY",
     "version": "1.0.0",
     "description": "A simple Node.js project with task routes",
     "main": "app.js",
