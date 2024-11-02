@@ -70,6 +70,14 @@ exports.updateTasks = (req, res) => {
             return;
         }
 
+        // Update task fields
+        tasks[taskIndex] = {
+            ...tasks[taskIndex],
+            title: fields.title || tasks[taskIndex].title,
+            description: fields.description || tasks[taskIndex].description,
+            status: fields.status || tasks[taskIndex].status,
+        };
+
 
 
 
