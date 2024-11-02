@@ -105,3 +105,14 @@ exports.deleteTasks = (req, res) => {
             res.end(JSON.stringify({ message: 'Error parsing form' }));
             return;
         }
+
+        const taskId = parseInt(fields.id);
+        let tasks = readTasksFromFile();
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+        if (taskIndex === -1) {
+            res.writeHead(404, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Task not found' }));
+            return;
+        }
+
