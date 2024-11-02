@@ -116,3 +116,16 @@ exports.deleteTasks = (req, res) => {
             return;
         }
 
+        // Remove task from array
+        const deletedTask = tasks.splice(taskIndex, 1)[0];
+        
+        writeTasksToFile(tasks);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            message: 'Task deleted successfully',
+            task: deletedTask
+        }));
+    });
+};
+
