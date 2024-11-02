@@ -78,6 +78,24 @@ exports.updateTasks = (req, res) => {
             status: fields.status || tasks[taskIndex].status,
         };
 
+        // If there's a new image, update it
+        const image = files.image ? files.image[0] : null;
+        if (image) {
+            fs.copyFileSync(image.path, path.join(__dirname, '../uploads', image.name));
+            tasks[taskIndex].image = `/uploads/${image.name}`;
+        }
+
+        writeTasksToFile(tasks);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            message: 'Task updated successfully',
+            task: tasks[taskIndex]
+        }));
+    });
+};
+
+
 
 
 
