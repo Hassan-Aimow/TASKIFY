@@ -11,7 +11,7 @@ exports.writeTasksToFile = (data) => {
 // Function to read tasks from file
 exports.readTasksFromFile = () => {
     if (!fs.existsSync(filePath)) {
-        exports.writeTasksToFile([]); // Initializes file if it doesn't exist
+        exports.writeTasksToFile([]); 
         return [];
     }
     const data = fs.readFileSync(filePath); // Reads file content

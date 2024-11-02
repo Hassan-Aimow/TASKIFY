@@ -12,7 +12,6 @@ exports.getTasks = (req, res) => {
 };
 
 // Create a new task
-// Create a new task
 exports.createTasks = (req, res) => {
     const form = new IncomingForm();
     form.parse(req, (err, fields, files) => {
@@ -51,13 +50,44 @@ exports.createTasks = (req, res) => {
 };
 
 
-// Placeholder for updating a task
+// Update an existing task
 exports.updateTasks = (req, res) => {
-    res.end(JSON.stringify({
-        message:'Not yet implemented'
-    }))
-    
-};
+    const form = new IncomingForm();
+    form.parse(req, (err, fields, files) => {
+        if (err) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Error parsing form' }));
+            return;
+        }
+
+        const taskId = parseInt(fields.id); // Ensure the ID is provided in the fields
+        const tasks = readTasksFromFile();
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+        if (taskIndex === -1) {
+            res.writeHead(404, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Task not found' }));
+            return;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Placeholder for deleting a task
 exports.deleteTasks = (req, res) => {
