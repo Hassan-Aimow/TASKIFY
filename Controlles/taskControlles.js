@@ -97,28 +97,11 @@ exports.updateTasks = (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Placeholder for deleting a task
 exports.deleteTasks = (req, res) => {
-    res.end(JSON.stringify({
-        message:'Not yet implemented'
-    }))
-    
-}; 
+    const form = new IncomingForm();
+    form.parse(req, (err, fields) => {
+        if (err) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Error parsing form' }));
+            return;
+        }
